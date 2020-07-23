@@ -1,0 +1,11 @@
+export const myCity = (weatherObj, timeStamp) => {
+
+
+    const getTimeStamp = () => timeStamp;
+
+    return {
+        getTimeStamp
+    };
+};
+
+export default myCity;

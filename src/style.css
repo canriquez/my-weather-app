@@ -57,3 +57,19 @@ body {
 }
 
 /* ================ section ================ */
+
+nav h1 {
+  color: white;
+}
+
+section {
+  margin: 20px 0;
+}
+
+section form {
+  justify-content: center !important;
+}
+
+section div {
+  margin: 0 auto;
+}

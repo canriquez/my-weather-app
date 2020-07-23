@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generic Project</title>
 </head>
-<body>
-    <div id="content">
 
-    </div>
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <h1>My Weather app</h1>
+        </nav>
+    </header>
+    <section class="container">
+        <form class="form-inline  row-flex">
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="myCity" class="sr-only">City</label>
+                <input  id="myCity" type="text" class="form-control"  placeholder="my City Weather">
+            </div>
+            <button id="cityButton" type="submit" class="btn btn-primary mb-2">Get my Weather</button>
+        </form>
+    </section>
 
     <script src="main.js"></script>
 </body>
+
 </html>
