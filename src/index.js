@@ -9,12 +9,13 @@ import { myCity } from './components/mycity';
 
 async function loadMyCityWeather(city = "london") {
     console.log("now getting the weather info for: " + city);
+    const API_KEY = process.env.WEATHER_API_KEY;
     const myInfo = document.createElement('article');
     const myCityName = document.createElement('h2');
     const myTemp = document.createElement('p');
     const myHum = document.createElement('p');
 
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=6810a7e34f2939f2cbca81e558486741`,
+    const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`,
         { mode: 'cors' });
 
     const responseObject = await response.json();
@@ -44,7 +45,7 @@ function getMyWeather() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('we are ready ...');
+    console.log('we are ready ...' + process.env.APP_TITLE);
     getMyWeather();
 
 });

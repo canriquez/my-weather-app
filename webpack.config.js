@@ -1,8 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const dotenv = require('dotenv').config({
+/* const dotenv = require('dotenv').config({
   path: path.join(__dirname, '.env')
-});
+}); */
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/index.js',
@@ -18,6 +19,14 @@ module.exports = {
           'style-loader',
           'css-loader',
         ],
+      },
+      {
+        test: /\.js?$/,
+        exclude: /(node_modules)/,
+        include: path.resolve(__dirname, "src"),
+        use: {
+          loader: "babel-loader"
+        }
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -50,8 +59,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.DefinePlugin({
-      "process.env": dotenv.parsed
-    }),
+    new Dotenv()
   ],
 };
