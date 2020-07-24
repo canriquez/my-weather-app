@@ -1,10 +1,19 @@
-export const myCity = (weatherObj, timeStamp) => {
-
+export const myCity = () => {
+    let dataReady = 0;
+    let weatherObject = {};
 
     const getTimeStamp = () => timeStamp;
+    const setDataReady = () => { dataReady = 1; };
+    const clearDataReady = () => { dataReady = 0; };
+    const updateWeatherObject = (obj) => { weatherObject = obj; };
+
+
 
     return {
-        getTimeStamp
+        getTimeStamp,
+        setDataReady,
+        clearDataReady,
+        updateWeatherObject,
     };
 };
 

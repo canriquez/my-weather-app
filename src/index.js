@@ -8,7 +8,10 @@ import { myCity } from './components/mycity';
 
 
 async function loadUnsplashImg(text = 'sunny clouds') {
-    const url = `https://api.unsplash.com/search/photos?query=${text}&per_page=20&client_id=gK52De2Tm_dL5o1IXKa9FROBAJ-LIYqR41xBdlg3X2k`;
+    const API_KEY = process.env.UNS_API;
+    console.log(API_KEY);
+    const url = `https://api.unsplash.com/search/photos?query=${text}&per_page=20&client_id=${API_KEY}`;
+    console.log('fetching from unesplash with :\n' + url);
     const divTag = document.querySelector('.image');
 
     try {
@@ -18,13 +21,12 @@ async function loadUnsplashImg(text = 'sunny clouds') {
         console.log('Unsplash Image indes is :\n' + rndImageIndex)
         if (unsplashObject.results[rndImageIndex].id !== "") {
             let imageTag = document.createElement('img');
-            imageTag.src = unsplashObject.results[rndImageIndex].urls.thumb;
+            imageTag.src = unsplashObject.results[rndImageIndex].urls.small;
             divTag.append(imageTag);
         }
 
     } catch (err) {
         console.warn('Something went wrong with Unsplash imaginary :', err);
-
     };
 
 }
@@ -162,9 +164,9 @@ function getMyWeather() {
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('we are ready ...' + process.env.APP_TITLE);
-    getMyWeather();
+    //getMyWeather();
     //getMyCity();
     loadMySessionWeather();
-    loadUnsplashImg('snow');
+    //loadUnsplashImg('snow');
 
 });
