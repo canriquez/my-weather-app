@@ -5,7 +5,7 @@ import './style.css';
 
 import { myCity } from './components/mycity';
 
-
+let userCity = myCity();
 
 async function loadUnsplashImg(text = 'sunny clouds') {
     const API_KEY = process.env.UNS_API;
@@ -93,7 +93,7 @@ async function getMyCity() {
     }
 }
 
-async function loadMySessionWeather(units = "metric") {
+async function loadMySessionWeather(userCity, units = "metric") {
     console.log("now getting the session weather");
     const API_KEY = process.env.WEATHER_API_KEY;
     console.log("Attempting get my session lat and long...");
@@ -117,6 +117,7 @@ async function loadMySessionWeather(units = "metric") {
 
             console.log("response below");
             console.log(responseObject);
+            userCity.updateWeatherObject(responseObject);
 
         } catch (err) {
             console.warn('Something went wrong with session weather :', err);
@@ -162,11 +163,25 @@ function getMyWeather() {
     button.addEventListener('click', processMyInput, false);
 }
 
+async function initSessionWeather(userCity) {
+
+    try {
+        await loadMySessionWeather(userCity);
+        let currentObject = userCity.getWeatherObject();
+        console.log('current city data ready :' + userCity.getDataReady());
+        console.log('current object :' + currentObject.weather[0].description);
+    } catch (err) {
+        console.warn('Something went wrong with checkReady :', err);
+    }
+}
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log('we are ready ...' + process.env.APP_TITLE);
     //getMyWeather();
     //getMyCity();
-    loadMySessionWeather();
+    //loadMySessionWeather(userCity);
     //loadUnsplashImg('snow');
-
+    initSessionWeather(userCity);
 });

@@ -5,15 +5,21 @@ export const myCity = () => {
     const getTimeStamp = () => timeStamp;
     const setDataReady = () => { dataReady = 1; };
     const clearDataReady = () => { dataReady = 0; };
-    const updateWeatherObject = (obj) => { weatherObject = obj; };
-
+    const getDataReady = () => dataReady;
+    const updateWeatherObject = (obj) => {
+        weatherObject = obj;
+        dataReady = 1;
+    };
+    const getWeatherObject = () => weatherObject;
 
 
     return {
         getTimeStamp,
         setDataReady,
         clearDataReady,
+        getDataReady,
         updateWeatherObject,
+        getWeatherObject,
     };
 };
 
