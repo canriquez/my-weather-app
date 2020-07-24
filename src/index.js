@@ -175,6 +175,50 @@ async function initSessionWeather(userCity) {
     }
 }
 
+function addTagToContainerId(containerId, tagType, tagId = '', classes = '') {
+    const contentTag = document.getElementById(containerId);
+    const newTag = document.createElement(tagType);
+    if (tagId !== '') {
+        newTag.setAttribute('id', tagId);
+    }
+
+    if (classes !== '') {
+        newTag.setAttribute('class', classes);
+    }
+    contentTag.appendChild(newTag);
+}
+
+function renderWindBox(userCity) {
+    let htmlTag = `<div class="data-card row-flex bs-xl lg-br ">`;
+    htmlTag = `<div class="card-title col-flex">Wind</div>`;
+    htmlTag = `<div class="speed col-flex">`;
+    htmlTag = `<p>65</p>`;
+    htmlTag = `</div>`;
+    htmlTag = `<div class="win-dir col-flex">`;
+    htmlTag = `<p>km/h</p>`;
+    htmlTag = `<div class="wind-arrow"></div>`;
+    htmlTag = `</div></div>`
+    return htmlTag;
+}
+
+function renderHumiBox(userCity) {
+    let htmlTag = `<div class="data-card row-flex bs-xl hum lg-br ">`;
+    htmlTag = `<div class="card-title col-flex">Humidity</div>`;
+    htmlTag = `<div class="drop"></div>`;
+    htmlTag = `<div class="humidity col-flex">`;
+    htmlTag = `<p>40</p></div>`;
+    htmlTag = `<div class="percent col-flex"><p>%</p></div></div>`;
+    return htmlTag;
+}
+
+function buildWinHumDash(userCity) {
+    addTagToContainerId('main-dash', 'div', 'wind-hum-dash', 'data-box row-flex');
+    let data_box = renderDataBox(userCity);
+    data_box = renderDataBox(userCity)
+    document.getElementById('wind-hum-dash').innerHTML = data_box;
+    addImagesMenuContainer();
+}
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -183,5 +227,5 @@ document.addEventListener('DOMContentLoaded', () => {
     //getMyCity();
     //loadMySessionWeather(userCity);
     //loadUnsplashImg('snow');
-    initSessionWeather(userCity);
+    //initSessionWeather(userCity);
 });

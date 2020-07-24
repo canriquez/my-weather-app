@@ -56,6 +56,22 @@ body {
   display: "" !important;
 }
 
+.bs-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.bs-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.lg-br {
+  border-radius: 2%;
+}
+
+.f-fil {
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+}
+
 /* ================ section ================ */
 
 nav h1 {
@@ -72,4 +88,119 @@ section form {
 
 section div {
   margin: 0 auto;
+}
+
+/* ================ data-cards ================ */
+
+.data-card {
+  position: relative;
+  justify-content: space-around;
+  width: 45vw;
+  margin: 15px;
+}
+
+.hum {
+  justify-content: space-around;
+}
+
+.speed {
+  width: 50%;
+}
+
+.speed p {
+  font-size: 3rem;
+  margin: 0px;
+  color: white;
+}
+
+.win-dir {
+  width: 50%;
+}
+
+.win-dir p {
+  margin: 0;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.wind-arrow {
+  background-image: url("./icons/wind_arrow.svg");
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  fill: white;
+}
+
+.percent {
+  width: 20%;
+}
+
+.percent p {
+  margin: 0 0 15px 0;
+  font-size: 1.5rem;
+  color: white;
+}
+
+.humidity {
+  width: 33%;
+}
+
+.humidity p {
+  font-size: 3rem;
+  margin: 0px;
+  color: white;
+}
+
+.drop {
+  background-image: url("./icons/drop.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  fill: white;
+}
+
+.card-title {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* City Card information */
+
+.city-card {
+  position: relative;
+  justify-content: space-around;
+  width: 80vw;
+  margin: 15px;
+}
+
+.city-name {
+  font-family: futura-light, sans-serif;
+  font-size: 3.2rem;
+  line-height: 3.8rem;
+}
+.state-name {
+  font-family: futura-light, sans-serif;
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+.state-name p,
+.city-name p {
+  margin-bottom: 0px;
+  text-transform: uppercase;
+  color: white;
 }
