@@ -246,5 +246,5 @@ document.addEventListener('DOMContentLoaded', () => {
     //getMyCity();
     //loadMySessionWeather(userCity);
     //loadUnsplashImg('cielo claro');
-    initSessionWeather(userCity);
+    //initSessionWeather(userCity);
 });
