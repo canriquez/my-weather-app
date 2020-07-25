@@ -208,12 +208,23 @@ section div {
   color: white;
 }
 
-/* ================ back-Scale ================ */
+.country-flag {
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+}
+
+.country-flag img {
+  width: 50px;
+  opacity: 0.5;
+}
+
+/* ================ weather lab | back-Scale ================ */
 
 .lab {
   position: relative;
   padding: 5px;
-  margin: 20px auto;
+  margin: 20px auto 5px auto;
   widht: 100vw;
   max-width: 320px;
   max-height: 284px;
@@ -253,9 +264,15 @@ section div {
 }
 
 #stormy {
+  bottom: 50%;
+  left: 12%;
+  background-image: url("./icons/stormy.svg");
+}
+
+#snowy {
   bottom: 16%;
   left: 22%;
-  background-image: url("./icons/stormy.svg");
+  background-image: url("./icons/snowy.svg");
 }
 
 #part-cloud {
@@ -265,14 +282,14 @@ section div {
 }
 
 #showers {
-  bottom: 50%;
-  left: 12%;
+  top: 13%;
+  left: 26%;
   background-image: url("./icons/showers.svg");
 }
 
 #cloudy {
-  top: 5%;
-  left: 50%;
+  top: 12%;
+  right: 21%;
   transform: translateX(-50%);
   background-image: url("./icons/cloudy.svg");
 }
@@ -283,11 +300,12 @@ section div {
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   background-image: url("./images/bar-arrow-01.svg");
-  width: 120%;
-  height: 120%;
+  width: 110%;
+  height: 110%;
   background-position: center;
   background-repeat: no-repeat;
   transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  transition: all 0.5s ease-in-out;
 }
 
 #pressure {
@@ -301,14 +319,41 @@ section div {
 
 #temp {
   position: absolute;
-  top: 26%;
+  top: 30%;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  font-size: 2rem;
+  font-size: 2.3rem;
+  z-index: 2;
 }
 #temp span:nth-child(2) {
   align-self: flex-start;
   font-size: 1.5rem;
   /* vertical-align: super; */
+}
+
+#unitButton {
+}
+
+.units {
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90% 90%;
+  position: relative;
+  width: 50.53px;
+  height: 25.33px;
+  margin: 0;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+}
+
+.c-units {
+  background-image: url("./icons/system_switch-C.svg");
+}
+
+.f-units {
+  background-image: url("./icons/system_switch-F.svg");
 }

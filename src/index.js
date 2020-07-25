@@ -161,19 +161,6 @@ function getMyWeather() {
     button.addEventListener('click', processMyInput, false);
 }
 
-async function initSessionWeather(userCity) {
-
-    try {
-        await loadMySessionWeather(userCity);
-        let currentObject = userCity.getWeatherObject();
-        console.log('current city data ready :' + userCity.getDataReady());
-        console.log('current object :' + currentObject.weather[0].description);
-        buildWinHumDash(userCity);
-    } catch (err) {
-        console.warn('Something went wrong with initSessionWeather :', err);
-    }
-}
-
 function addTagToContainerId(containerId, tagType, tagId = '', classes = '') {
     const contentTag = document.getElementById(containerId);
     const newTag = document.createElement(tagType);
@@ -215,7 +202,10 @@ function renderCityBox(data) {
     htmlTag += `<div class="city-name f-fil">`;
     htmlTag += `<p class="f-fil-m">${data.name}</p></div>`;
     htmlTag += `<div class="state-name">`;
-    htmlTag += ` <p class="f-fil-m">nearby state</p></div></div>`;
+    htmlTag += ` <p class="f-fil-m">nearby state</p></div>`;
+    htmlTag += `<div class="country-flag">`;
+    htmlTag += `<img src="https://www.countryflags.io/${data.sys.country}/flat/64.png"></img>`;
+    htmlTag += `</div></div>`;
     return htmlTag;
 }
 
@@ -224,7 +214,6 @@ function renderRotateWindArrow(data) {
     arrowTag.style.transform = `rotate(${data.wind.deg - 90}deg)`;
     return;
 }
-
 
 function buildWinHumDash(userCity) {
     let data = userCity.getWeatherObject();
@@ -239,6 +228,49 @@ function buildWinHumDash(userCity) {
     return;
 }
 
+function renderTempDash(data) {
+    let htmlTag = `<div id="temp" class="f-fil row-flex">`;
+    htmlTag += `<span>${data.main.temp.toFixed(1)}</span>`;
+    htmlTag += `<span>o</span>`;
+    htmlTag += `<span>C</span></div>`;
+    htmlTag += `<div id="back-scale">`;
+    htmlTag += `<div id="sunny" class="wi"></div>`;
+    htmlTag += `<div id="part-cloud" class="wi"></div>`;
+    htmlTag += `<div id="cloudy" class="wi"></div>`;
+    htmlTag += `<div id="showers" class="wi"></div>`;
+    htmlTag += `<div id="snowy" class="wi"></div>`;
+    htmlTag += `<div id="stormy" class="wi"></div></div>`;
+    htmlTag += `<div id="bar-arrow"></div>`;
+    htmlTag += `<div id="pressure" class="f-fil">${data.main.pressure}hPa</div>`;
+    htmlTag += `<div id="unitButton" class="f-fil units c-units"></div>`;
+    return htmlTag;
+}
+
+function buildWeatherLab(userCity) {
+    let data = userCity.getWeatherObject();
+    addTagToContainerId('main-dash', 'div', 'weather-lab', 'lab');
+    let tempDash = renderTempDash(data);
+
+    document.getElementById('weather-lab').innerHTML = tempDash;
+
+    //renderRotateBarArrow(data);
+    return;
+}
+
+async function initSessionWeather(userCity) {
+
+    try {
+        await loadMySessionWeather(userCity);
+        let currentObject = userCity.getWeatherObject();
+        console.log('current city data ready :' + userCity.getDataReady());
+        console.log('current object :' + currentObject.weather[0].description);
+        buildWeatherLab(userCity);
+        buildWinHumDash(userCity);
+    } catch (err) {
+        console.warn('Something went wrong with initSessionWeather :', err);
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('we are ready ...' + process.env.APP_TITLE);
@@ -246,5 +278,5 @@ document.addEventListener('DOMContentLoaded', () => {
     //getMyCity();
     //loadMySessionWeather(userCity);
     //loadUnsplashImg('cielo claro');
-    //initSessionWeather(userCity);
+    initSessionWeather(userCity);
 });
