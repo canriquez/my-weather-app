@@ -32,8 +32,6 @@ async function loadUnsplashImg(text = 'sunny clouds') {
 }
 
 
-
-
 async function getMyIP() {
     const ipRegexp = /(?=ip=)ip=(\d+[.]\d+[.]\d+[.]\d+)/g;
     const ccRegex = /(?=loc)loc=(\w+)\n/g;
@@ -170,8 +168,9 @@ async function initSessionWeather(userCity) {
         let currentObject = userCity.getWeatherObject();
         console.log('current city data ready :' + userCity.getDataReady());
         console.log('current object :' + currentObject.weather[0].description);
+        buildWinHumDash(userCity);
     } catch (err) {
-        console.warn('Something went wrong with checkReady :', err);
+        console.warn('Something went wrong with initSessionWeather :', err);
     }
 }
 
@@ -188,37 +187,57 @@ function addTagToContainerId(containerId, tagType, tagId = '', classes = '') {
     contentTag.appendChild(newTag);
 }
 
-function renderWindBox(userCity) {
+function renderWindBox(data) {
     let htmlTag = `<div class="data-card row-flex bs-xl lg-br ">`;
-    htmlTag = `<div class="card-title col-flex">Wind</div>`;
-    htmlTag = `<div class="speed col-flex">`;
-    htmlTag = `<p>65</p>`;
-    htmlTag = `</div>`;
-    htmlTag = `<div class="win-dir col-flex">`;
-    htmlTag = `<p>km/h</p>`;
-    htmlTag = `<div class="wind-arrow"></div>`;
-    htmlTag = `</div></div>`
+    htmlTag += `<div class="card-title f-fil col-flex">Wind</div>`;
+    htmlTag += `<div class="speed col-flex">`;
+    htmlTag += `<p class="f-fil">${data.wind.speed.toFixed(1)}</p>`;
+    htmlTag += `</div>`;
+    htmlTag += `<div class="win-dir col-flex">`;
+    htmlTag += `<p class="f-fil">km/h</p>`;
+    htmlTag += `<div id="wind-arrow" class="wind-arrow"></div>`;
+    htmlTag += `</div></div>`
     return htmlTag;
 }
 
-function renderHumiBox(userCity) {
+function renderHumiBox(data) {
     let htmlTag = `<div class="data-card row-flex bs-xl hum lg-br ">`;
-    htmlTag = `<div class="card-title col-flex">Humidity</div>`;
-    htmlTag = `<div class="drop"></div>`;
-    htmlTag = `<div class="humidity col-flex">`;
-    htmlTag = `<p>40</p></div>`;
-    htmlTag = `<div class="percent col-flex"><p>%</p></div></div>`;
+    htmlTag += `<div class="card-title f-fil col-flex">Humidity</div>`;
+    htmlTag += `<div class="drop"></div>`;
+    htmlTag += `<div class="humidity col-flex">`;
+    htmlTag += `<p class="f-fil">${data.main.humidity}</p></div>`;
+    htmlTag += `<div class="percent col-flex"><p class="f-fil">%</p></div></div>`;
     return htmlTag;
 }
+
+function renderCityBox(data) {
+    let htmlTag = `<div class="city-card hum lg-br ">`;
+    htmlTag += `<div class="city-name f-fil">`;
+    htmlTag += `<p class="f-fil-m">${data.name}</p></div>`;
+    htmlTag += `<div class="state-name">`;
+    htmlTag += ` <p class="f-fil-m">nearby state</p></div></div>`;
+    return htmlTag;
+}
+
+function renderRotateWindArrow(data) {
+    let arrowTag = document.getElementById("wind-arrow");
+    arrowTag.style.transform = `rotate(${data.wind.deg - 90}deg)`;
+    return;
+}
+
 
 function buildWinHumDash(userCity) {
+    let data = userCity.getWeatherObject();
     addTagToContainerId('main-dash', 'div', 'wind-hum-dash', 'data-box row-flex');
-    let data_box = renderDataBox(userCity);
-    data_box = renderDataBox(userCity)
+    let data_box = renderWindBox(data);
+    data_box += renderHumiBox(data);
     document.getElementById('wind-hum-dash').innerHTML = data_box;
-    addImagesMenuContainer();
+    addTagToContainerId('main-dash', 'div', 'city-dash', 'data-box row-flex');
+    let city_box = renderCityBox(data);
+    document.getElementById('city-dash').innerHTML = city_box;
+    renderRotateWindArrow(data);
+    return;
 }
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -226,6 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
     //getMyWeather();
     //getMyCity();
     //loadMySessionWeather(userCity);
-    //loadUnsplashImg('snow');
-    //initSessionWeather(userCity);
+    //loadUnsplashImg('cielo claro');
+    initSessionWeather(userCity);
 });
