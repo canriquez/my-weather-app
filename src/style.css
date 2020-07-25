@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: #f8f9fa;
+  background-color: gray;
   font-family: futura-light, sans-serif;
 }
 
@@ -212,22 +212,103 @@ section div {
 
 .lab {
   position: relative;
+  padding: 5px;
+  margin: 20px auto;
   widht: 100vw;
+  max-width: 320px;
+  max-height: 284px;
   height: 50vh;
   background-color: transparent;
 }
 
 #back-scale {
+  position: relative;
   width: 100%;
   height: 100%;
-  background-image: url("./images/barom_scale-01.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 80% 80%;
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
-  position: relative;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-mask-image: url("./images/barom_scale.svg");
+  mask-image: url("./images/barom_scale.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
 }
 
-svg .cls-2 {
-  fill: #000;
+.wi {
+  position: absolute !important;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+}
+
+#sunny {
+  bottom: 16%;
+  right: 22%;
+  background-image: url("./icons/sunny.svg");
+}
+
+#stormy {
+  bottom: 16%;
+  left: 22%;
+  background-image: url("./icons/stormy.svg");
+}
+
+#part-cloud {
+  bottom: 51%;
+  right: 12%;
+  background-image: url("./icons/part-cloud.svg");
+}
+
+#showers {
+  bottom: 50%;
+  left: 12%;
+  background-image: url("./icons/showers.svg");
+}
+
+#cloudy {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: url("./icons/cloudy.svg");
+}
+
+#bar-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-image: url("./images/bar-arrow-01.svg");
+  width: 120%;
+  height: 120%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+
+#pressure {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+#temp {
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 2rem;
+}
+#temp span:nth-child(2) {
+  align-self: flex-start;
+  font-size: 1.5rem;
+  /* vertical-align: super; */
 }
