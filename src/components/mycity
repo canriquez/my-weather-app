@@ -19,7 +19,7 @@ export const myCity = () => {
             coord: { lat: '', lon: '' },
             main: { temp: '-.-', pressure: '----', humidity: '--', temp_max: '', temp_min: '' },
             sys: { id: '', sunrise: '', sunset: '', country: 'AR', type: '' },
-            weather: { id: '', main: '', description: '', arrow: 0 },
+            weather: { id: 622, main: '', description: '', arrow: 0 },
             wind: { deg: 90, speed: '-.-' }
         };
         dataReady = false;

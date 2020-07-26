@@ -214,12 +214,44 @@ function renderRotateWindArrow(data) {
     return;
 }
 
+function transWeatherDescription(id) {
+    console.log('hey- we are in the toDeg Switch id: ' + id);
+    switch (true) {
+        case (id >= 800 && id <= 804):
+            return ((-8.249289925 * id * id) + (13208.61119 * id) - 5287208.395);
+            break;
+        case (id >= 701 && id <= 781):
+            return ((-1.57282646E-3 * id * id) + (1.82322848 * id) - 465.3239501);
+            break;
+        case (id >= 200 && id <= 232):
+            return ((2.079436717E-2 * id * id) + (-10.08168264 * id) + 1121.535281);
+            break;
+        case (id >= 300 && id <= 321):
+            return ((-5.028726802E-2 * id * id) + (30.48646455 * id) - 4632.223787);
+            break;
+        case (id >= 500 && id <= 531):
+            return ((1.112129237E-2 * id * id) + (-12.52634698 * id) + 3454.698266);
+            break;
+        case (id >= 600 && id <= 622):
+            return ((-5.678032989E-2 * id * id) + (68.48273427 * id) - 20770.321);
+            break;
+        default:
+            return 0;
+            break;
+    }
+}
+
 function renderRotateBarArrow(data) {
     console.log('HERE HERE: attempt bar arrow rotation...');
+    console.log('data.weather.id :' + data.weather.id)
+    let toDeg = transWeatherDescription(data.weather.id);
+    console.log('toDeg :' + toDeg)
     let arrowTag = document.getElementById("bar-arrow");
-    arrowTag.style.transform = `translateX(-50%) translateY(-50%) rotate(${data.weather.arrow}deg)`;
+    arrowTag.style.transform = `translateX(-50%) translateY(-50%) rotate(${toDeg}deg)`;
     return;
 }
+
+
 
 function buildWinHumDash(userCity) {
     let data = userCity.getWeatherObject();
