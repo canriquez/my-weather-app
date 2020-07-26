@@ -10,6 +10,7 @@
 body {
   background-color: gray;
   font-family: futura-light, sans-serif;
+  overflow: hidden;
 }
 
 /* ================ fonts ================ */
@@ -222,7 +223,7 @@ section div {
 /* Add new city action */
 
 .input-new-city {
-  width: 80%;
+  width: 70%;
   font-size: 1.8rem;
   line-height: 3.5rem;
   background-color: transparent;
@@ -235,8 +236,7 @@ section div {
   border: dashed 1px white;
 }
 
-#enter-text {
-  background-image: url("./icons/check.svg");
+.edit-action-btn {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -245,13 +245,21 @@ section div {
   display: inline-block;
   width: 30px;
   height: 30px;
-  margin-right: 20px;
-  fill: white;
+}
+
+#ok-text {
+  background-image: url("./icons/check.svg");
+}
+
+#cancel-text {
+  background-image: url("./icons/cancel.svg");
 }
 
 /* ================ weather lab | back-Scale ================ */
 
 .lab {
+  overflow: hidden;
+  width: 100%;
   position: relative;
   padding: 5px;
   margin: 20px auto 5px auto;

@@ -134,6 +134,7 @@ async function loadMyCityWeather(city = 'london', units = 'metric', lang = 'en')
 
     console.log('response below');
     console.log(responseObject);
+    return responseObject;
 }
 
 
@@ -297,6 +298,42 @@ async function initSessionWeather(userCity) {
     }
 }
 
+async function initCityQueryWeather(userCity) {
+    let cityQuery = userCity.getWeatherObject().name;
+    console.log('initiating city weather query with city: ' + cityQuery)
+    try {
+        let cityObject = await loadMyCityWeather(cityQuery);
+        userCity.updateWeatherObject(cityObject);
+        // userCity.initWeatherObject();
+        const currentObject = userCity.getWeatherObject();
+        console.log(`current city data ready :${userCity.getDataReady()}`);
+        console.log(`current object :${currentObject.weather.description}`);
+        buildWeatherLab(userCity);
+        buildWinHumDash(userCity);
+        addCityListeners(userCity);
+        userCity.clearEditingCity();
+    } catch (err) {
+        console.warn('Something went wrong with initCityQueryWeather :', err);
+    }
+}
+
+function updateCityListener(userCity) {
+
+    const okText = document.getElementById('ok-text')
+
+    const storeNewCity = function storeNewCity(e) {
+        const cityInputTag = document.getElementById('newCityName')
+        let cityObj = userCity.getWeatherObject();
+        cityObj.name = cityInputTag.value;
+        userCity.clearDataReady();
+        console.log('this is the weather OBJ after update :\n' + userCity.getWeatherObject().name);
+        initCityQueryWeather(userCity);
+    }
+    okText.addEventListener('click', storeNewCity, false);
+
+}
+
+
 
 function addCityListeners(userCity) {
     let currentCityName = userCity.getWeatherObject().name;
@@ -312,12 +349,16 @@ function addCityListeners(userCity) {
         console.log("setting editing city to :" + userCity.getEditingCity());
         console.log("getting the click and rendering the input");
         this.removeEventListener(event, inputCity, true);
-        this.innerHTML = `<input type="text" id="name" name="name" 
+        this.innerHTML = `<input type="text" id="newCityName" name="newCityName" 
         value="${currentCityName}"
         class="input-new-city f-fil" 
         required minlength="4" maxlength="20" size="10">
-        <div id="enter-text"></div>`;
+        <div id="ok-text" class="edit-action-btn"></div>
+        <div id="cancel-text" class="edit-action-btn"></div>`;
+        //after rendering we start listening to the ok button to save changes
+        updateCityListener(userCity)
     }
+
 
     cityTag.addEventListener('click', inputCity, false);
 }
