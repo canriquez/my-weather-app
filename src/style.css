@@ -298,13 +298,12 @@ section div {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(-50%);
   background-image: url("./images/bar-arrow-01.svg");
   width: 110%;
   height: 110%;
   background-position: center;
   background-repeat: no-repeat;
-  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  /*   transform: translateX(-50%) translateY(-50%) rotate(-90deg); */
   transition: all 0.5s ease-in-out;
 }
 

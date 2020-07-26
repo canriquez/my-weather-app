@@ -99,7 +99,6 @@ async function loadMySessionWeather(userCity, units = "metric") {
 
     if (mySessionCity) {
         try {
-
             const lat = mySessionCity.latitude;
             const long = mySessionCity.longitude;
             const lang = mySessionCity.location.languages[0].code;
@@ -174,11 +173,11 @@ function addTagToContainerId(containerId, tagType, tagId = '', classes = '') {
     contentTag.appendChild(newTag);
 }
 
-function renderWindBox(data) {
+function renderWindBox(data, ready) {
     let htmlTag = `<div class="data-card row-flex bs-xl lg-br ">`;
     htmlTag += `<div class="card-title f-fil col-flex">Wind</div>`;
     htmlTag += `<div class="speed col-flex">`;
-    htmlTag += `<p class="f-fil">${data.wind.speed.toFixed(1)}</p>`;
+    htmlTag += `<p class="f-fil">${ready ? data.wind.speed.toFixed(1) : data.wind.speed}</p>`;
     htmlTag += `</div>`;
     htmlTag += `<div class="win-dir col-flex">`;
     htmlTag += `<p class="f-fil">km/h</p>`;
@@ -215,10 +214,18 @@ function renderRotateWindArrow(data) {
     return;
 }
 
+function renderRotateBarArrow(data) {
+    console.log('HERE HERE: attempt bar arrow rotation...');
+    let arrowTag = document.getElementById("bar-arrow");
+    arrowTag.style.transform = `translateX(-50%) translateY(-50%) rotate(${data.weather.arrow}deg)`;
+    return;
+}
+
 function buildWinHumDash(userCity) {
     let data = userCity.getWeatherObject();
+    let ready = userCity.getDataReady();
     addTagToContainerId('main-dash', 'div', 'wind-hum-dash', 'data-box row-flex');
-    let data_box = renderWindBox(data);
+    let data_box = renderWindBox(data, ready);
     data_box += renderHumiBox(data);
     document.getElementById('wind-hum-dash').innerHTML = data_box;
     addTagToContainerId('main-dash', 'div', 'city-dash', 'data-box row-flex');
@@ -228,9 +235,9 @@ function buildWinHumDash(userCity) {
     return;
 }
 
-function renderTempDash(data) {
+function renderTempDash(data, ready) {
     let htmlTag = `<div id="temp" class="f-fil row-flex">`;
-    htmlTag += `<span>${data.main.temp.toFixed(1)}</span>`;
+    htmlTag += `<span>${ready ? data.main.temp.toFixed(1) : data.main.temp}</span>`;
     htmlTag += `<span>o</span>`;
     htmlTag += `<span>C</span></div>`;
     htmlTag += `<div id="back-scale">`;
@@ -248,22 +255,24 @@ function renderTempDash(data) {
 
 function buildWeatherLab(userCity) {
     let data = userCity.getWeatherObject();
+    let ready = userCity.getDataReady();
     addTagToContainerId('main-dash', 'div', 'weather-lab', 'lab');
-    let tempDash = renderTempDash(data);
+    let tempDash = renderTempDash(data, ready);
 
     document.getElementById('weather-lab').innerHTML = tempDash;
 
-    //renderRotateBarArrow(data);
+    renderRotateBarArrow(data);
     return;
 }
 
 async function initSessionWeather(userCity) {
 
     try {
-        await loadMySessionWeather(userCity);
+        //await loadMySessionWeather(userCity);
+        userCity.initWeatherObject();
         let currentObject = userCity.getWeatherObject();
         console.log('current city data ready :' + userCity.getDataReady());
-        console.log('current object :' + currentObject.weather[0].description);
+        console.log('current object :' + currentObject.weather.description);
         buildWeatherLab(userCity);
         buildWinHumDash(userCity);
     } catch (err) {

@@ -1,16 +1,29 @@
 export const myCity = () => {
-    let dataReady = 0;
+    let dataReady = false;
     let weatherObject = {};
 
     const getTimeStamp = () => timeStamp;
-    const setDataReady = () => { dataReady = 1; };
+    const setDataReady = () => { dataReady = true; };
     const clearDataReady = () => { dataReady = 0; };
     const getDataReady = () => dataReady;
     const updateWeatherObject = (obj) => {
         weatherObject = obj;
-        dataReady = 1;
+        dataReady = true;
     };
     const getWeatherObject = () => weatherObject;
+    const initWeatherObject = () => {
+        weatherObject = {
+            name: '...........',
+            timezone: '',
+            clouds: { all: '' },
+            coord: { lat: '', lon: '' },
+            main: { temp: '-.-', pressure: '----', humidity: '--', temp_max: '', temp_min: '' },
+            sys: { id: '', sunrise: '', sunset: '', country: 'AR', type: '' },
+            weather: { id: '', main: '', description: '', arrow: 0 },
+            wind: { deg: 90, speed: '-.-' }
+        };
+        dataReady = false;
+    }
 
 
     return {
@@ -20,6 +33,7 @@ export const myCity = () => {
         getDataReady,
         updateWeatherObject,
         getWeatherObject,
+        initWeatherObject,
     };
 };
 
