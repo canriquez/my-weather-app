@@ -4,7 +4,7 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 
 body {
@@ -113,7 +113,7 @@ section div {
 }
 
 .speed p {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0px;
   color: white;
 }
@@ -124,7 +124,7 @@ section div {
 
 .win-dir p {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
 }
 
@@ -145,7 +145,7 @@ section div {
 
 .percent p {
   margin: 0 0 15px 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
 }
 
@@ -154,7 +154,7 @@ section div {
 }
 
 .humidity p {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0px;
   color: white;
 }
@@ -193,8 +193,8 @@ section div {
 }
 
 .city-name p {
-  font-size: 2.5rem;
-  line-height: 3.5rem;
+  font-size: 2rem;
+  line-height: 3rem;
 }
 .state-name p {
   font-size: 1.8rem;
@@ -342,7 +342,7 @@ section div {
   background-position: center;
   background-repeat: no-repeat;
   /*   transform: translateX(-50%) translateY(-50%) rotate(-90deg); */
-  transition: all 0.5s ease-in-out;
+  transition: all 1s ease-in-out;
 }
 
 #pressure {
@@ -360,7 +360,7 @@ section div {
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  font-size: 2.3rem;
+  font-size: 2.8rem;
   z-index: 2;
 }
 #temp span:nth-child(2) {

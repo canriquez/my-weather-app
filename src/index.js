@@ -319,18 +319,35 @@ async function initCityQueryWeather(userCity) {
 
 function updateCityListener(userCity) {
 
-    const okText = document.getElementById('ok-text')
+    const okText = document.getElementById('ok-text');
 
     const storeNewCity = function storeNewCity(e) {
         const cityInputTag = document.getElementById('newCityName')
         let cityObj = userCity.getWeatherObject();
         cityObj.name = cityInputTag.value;
+        //We have to check if input value is same as current object value and render the current object
+        // and exit with no change or storage or API event
         userCity.clearDataReady();
         console.log('this is the weather OBJ after update :\n' + userCity.getWeatherObject().name);
         initCityQueryWeather(userCity);
     }
     okText.addEventListener('click', storeNewCity, false);
+}
 
+function cancellCityListener(userCity) {
+
+    const cancellTag = document.getElementById('cancel-text');
+
+    const cancellNewCity = function cancellNewCity(e) {
+        e.stopPropagation();
+        console.log("User has cancel Edit action... rendering all back: ");
+        userCity.clearDataReady();
+        buildWeatherLab(userCity);
+        buildWinHumDash(userCity);
+        addCityListeners(userCity);
+        userCity.clearEditingCity();
+    }
+    cancellTag.addEventListener('click', cancellNewCity, false);
 }
 
 
@@ -357,6 +374,7 @@ function addCityListeners(userCity) {
         <div id="cancel-text" class="edit-action-btn"></div>`;
         //after rendering we start listening to the ok button to save changes
         updateCityListener(userCity)
+        cancellCityListener(userCity);
     }
 
 
