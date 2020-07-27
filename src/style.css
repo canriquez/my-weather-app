@@ -394,3 +394,17 @@ section div {
 .f-units {
   background-image: url("./icons/system_switch-F.svg");
 }
+
+/*  Background - image */
+.image {
+  background-image: url(https://images.unsplash.com/photo-1572553257259-272f8b389fa8?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE1MTEzM30;);
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 150% 150%;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  height: 100%;
+}
