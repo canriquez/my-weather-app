@@ -102,6 +102,8 @@ section div {
   justify-content: space-around;
   width: 45vw;
   margin: 15px;
+
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 100%);
 }
 
 .hum {
@@ -194,11 +196,11 @@ section div {
 
 .city-name p {
   font-size: 2rem;
-  line-height: 3rem;
+  line-height: 2.1rem;
 }
 .state-name p {
-  font-size: 1.8rem;
-  line-height: 2.5rem;
+  font-size: 1.2rem;
+  line-height: 2.1rem;
 }
 
 .state-name p,
@@ -397,14 +399,26 @@ section div {
 
 /*  Background - image */
 .image {
-  background-image: url(https://images.unsplash.com/photo-1572553257259-272f8b389fa8?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE1MTEzM30;);
+  /*   background-image: url(https://images.unsplash.com/photo-1572553257259-272f8b389fa8?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE1MTEzM30;);
+ */
   position: fixed;
   top: 0;
   left: 0;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 150% 150%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-size: cover;
+  /*   background-color: rgba(255, 255, 255, 0.2); */
   width: 100%;
   height: 100%;
+  /* background-blend-mode: difference; */
+  /*  opacity: 0.5; */
+}
+
+.image-gradient {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
 }

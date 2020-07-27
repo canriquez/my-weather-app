@@ -4,7 +4,7 @@ export const UnsPlash = (() => {
     async function loadImg(text = 'sunny clouds') {
         const API_KEY = process.env.UNS_API;
         console.log(API_KEY);
-        const url = `https://api.unsplash.com/search/photos?query=${text}&per_page=20&client_id=${API_KEY}`;
+        const url = `https://api.unsplash.com/search/photos?query=${text}&orientation=portrait&per_page=20&client_id=${API_KEY}`;
         console.log(`fetching from unesplash with :\n${url}`);
         const divTag = document.querySelector('.image');
 
