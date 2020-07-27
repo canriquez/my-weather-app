@@ -75,6 +75,35 @@ export const DisplayController = (() => {
         return htmlTag;
     };
 
+    const renderPhotoCredits = (data) => {
+        const htmlTag = `<div class="img-credit">
+        <a href="${data.links.html}">Photo by: ${data.user.username} @unsplash</a>
+        </div>`;
+        return htmlTag;
+    };
+
+    const renderDesignCredits = () => {
+        const htmlTag = `<div class="design-credit">
+        <a href="https://dribbble.com/dslv">UI design by: Piotr Sliwa @dribbble</a>
+        </div>`;
+        return htmlTag;
+    };
+
+    const renderWebCredits = () => {
+        const htmlTag = `<div class="web-credit">
+        <a href="https://www.carlosanriquez.com">Web Development: Carlos Anriquez | 2020</a>
+        </div>`;
+        return htmlTag;
+    };
+
+    const buildCredits = (data) => {
+        console.log('building credits...');
+        let creditBox = renderWebCredits();
+        creditBox += renderDesignCredits();
+        creditBox += renderPhotoCredits(data);
+        document.getElementById('credits').innerHTML = creditBox;
+    };
+
     const renderRotateWindArrow = (data) => {
         const arrowTag = document.getElementById('wind-arrow');
         arrowTag.style.transform = `rotate(${data.wind.deg - 90}deg)`;
@@ -93,7 +122,7 @@ export const DisplayController = (() => {
 
     const renderTempDash = (data, ready) => {
         let htmlTag = '<div id="temp" class="f-fil row-flex">';
-        console.log('temp data is :' + data.main.temp + ' - typeOf :' + typeof (data.main.temp));
+        console.log(`temp data is :${data.main.temp} - typeOf :${typeof (data.main.temp)}`);
         htmlTag += `<span>${ready ? data.main.temp.toFixed(1) : data.main.temp}</span>`;
         htmlTag += '<span>o</span>';
         htmlTag += `<span>${data.main.unit}</span></div>`;
@@ -112,6 +141,7 @@ export const DisplayController = (() => {
 
     /* build functionc - combine render functions */
 
+
     const buildWinHumDash = (userCity) => {
         const data = userCity.getWeatherObject();
         const ready = userCity.getDataReady();
@@ -126,6 +156,7 @@ export const DisplayController = (() => {
     };
 
     const buildWeatherLab = (userCity) => {
+        document.getElementById('main-dash').innerHTML = '';
         const data = userCity.getWeatherObject();
         const ready = userCity.getDataReady();
         addTagToContainerId('main-dash', 'div', 'weather-lab', 'lab');
@@ -136,73 +167,15 @@ export const DisplayController = (() => {
         renderRotateBarArrow(data);
     };
 
+
     /* listeners */
 
-    const updateCityListener = (userCity) => {
-        const okText = document.getElementById('ok-text');
-
-        const storeNewCity = function storeNewCity(e) {
-
-            const cityInputTag = document.getElementById('newCityName');
-            const cityObj = userCity.getWeatherObject();
-            console.log('-User Accepted the input- :' + cityInputTag.value)
-            cityObj.targetCity = cityInputTag.value;
-            // We have to check if input value is same as current object value and render the current object
-            // and exit with no change or storage or API event
-            userCity.clearDataReady();
-            console.log(`this is the weather OBJ after update :\n${userCity.getWeatherObject().targetCity}`);
-            AppLogic.initCityQueryWeather(userCity);
-        };
-        okText.addEventListener('click', storeNewCity, false);
-    };
-
-    const cancellCityListener = (userCity) => {
-        const cancellTag = document.getElementById('cancel-text');
-
-        const cancellNewCity = function cancellNewCity(e) {
-            e.stopPropagation();
-            console.log('User has cancel Edit action... rendering all back: ');
-            userCity.clearDataReady();
-            buildWeatherLab(userCity);
-            buildWinHumDash(userCity);
-            addCityListeners(userCity);
-            userCity.clearEditingCity();
-        };
-        cancellTag.addEventListener('click', cancellNewCity, false);
-    };
-
-    const addCityListeners = (userCity) => {
-        const currentCityName = userCity.getWeatherObject().name;
-        const cityTag = document.getElementById('inputCity');
 
 
-        const inputCity = function inputCity(e) {
-            console.log(`are we editing? :${userCity.getEditingCity()}`);
-            if (userCity.getEditingCity()) { return; }
-            userCity.setEditingCity();
-            cityTag.classList.add('row-flex');
-            cityTag.classList.add('input-city-show');
-            console.log(`setting editing city to :${userCity.getEditingCity()}`);
-            console.log('getting the click and rendering the input');
-            this.removeEventListener(event, inputCity, true);
-            this.innerHTML = `<input type="text" id="newCityName" name="newCityName" 
-                value="${currentCityName}"
-                class="input-new-city f-fil" 
-                required minlength="4" maxlength="20" size="10">
-                <div id="ok-text" class="edit-action-btn"></div>
-                <div id="cancel-text" class="edit-action-btn"></div>`;
-            // after rendering we start listening to the ok button to save changes
-            updateCityListener(userCity);
-            cancellCityListener(userCity);
-        };
 
-
-        cityTag.addEventListener('click', inputCity, false);
-    };
 
     const addSystemToggle = (userCity) => {
-
-        console.log("adding system unit system toggler..");
+        console.log('adding system unit system toggler..');
         const toggleTag = document.getElementById('unitButton');
         const data = userCity.getWeatherObject();
         const ready = userCity.getDataReady();
@@ -212,46 +185,49 @@ export const DisplayController = (() => {
         const toggleUnitButton = document.getElementById('uniButton');
 
         if (data.main.unit == 'C') {
-            //change class to toggle button to settled to "C"
+            // change class to toggle button to settled to "C"
             console.log('toggling class to C degress..');
             toggleTag.classList.remove('f-units');
             toggleTag.classList.add('c-units');
-
         } else {
-            //change class to toggle button to settled to "C"
+            // change class to toggle button to settled to "C"
             console.log('toggling class to F degress..');
             toggleTag.classList.remove('c-units');
             toggleTag.classList.add('f-units');
         }
 
         const toggleUnits = function toggleUnits(e) {
-            console.log("Click on toggler icon..");
+            console.log('Click on toggler icon..');
             e.stopPropagation();
-            let newUnit = userCity.toggleUnits();
+            const newUnit = userCity.toggleUnits();
 
-            console.log("New Unit is :" + newUnit);
-            //render temp tag with new values/units
-            console.log("Re-rendering TempDash");
+            console.log(`New Unit is :${newUnit}`);
+            // render temp tag with new values/units
+            console.log('Re-rendering TempDash');
             const tempDash = renderTempDash(data, ready);
             document.getElementById('weather-lab').innerHTML = tempDash;
 
-            //render wind tag with new values/units
-            console.log("Re-rendering Windbox");
+            // render wind tag with new values/units
+            console.log('Re-rendering Windbox');
             let dataBox = renderWindBox(data, ready);
             dataBox += renderHumiBox(data);
             document.getElementById('wind-hum-dash').innerHTML = dataBox;
-            //add systemToggle listener back
+
+            // render back rotating arrow
+            renderRotateBarArrow(data);
+
+            // add systemToggle listener back
             addSystemToggle(userCity);
         };
 
         toggleTag.addEventListener('click', toggleUnits, false);
-    }
+    };
 
     return {
         buildWinHumDash,
         buildWeatherLab,
-        addCityListeners,
         addSystemToggle,
+        buildCredits,
     };
 })();
 

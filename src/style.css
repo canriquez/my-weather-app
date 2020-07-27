@@ -95,6 +95,15 @@ section div {
   margin: 0 auto;
 }
 
+/* ================= main dash ================= */
+
+#main-dash {
+  max-width: 530px;
+  width: 80%;
+  margin: 0 auto;
+  min-height: 571px;
+}
+
 /* ================ data-cards ================ */
 
 .data-card {
@@ -269,6 +278,7 @@ section div {
   max-width: 320px;
   max-height: 284px;
   height: 50vh;
+  min-height: 270px;
   background-color: transparent;
 }
 
@@ -412,6 +422,7 @@ section div {
   height: 100%;
   /* background-blend-mode: difference; */
   /*  opacity: 0.5; */
+  z-index: -2;
 }
 
 .image-gradient {
@@ -421,4 +432,71 @@ section div {
   top: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+/* =========== credits ============ */
+
+.web-credit {
+  margin-bottom: 5px;
+  border-bottom: 0.5px solid dimgray;
+}
+
+.web-credit a {
+  color: burlywood;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 0;
+  font-size: 0.7rem;
+  text-align: right;
+}
+
+.design-credit a {
+  color: dimgray;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.6rem;
+  text-align: left;
+  z-index: 0;
+}
+
+.img-credit a {
+  color: dimgray;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.6rem;
+  text-align: left;
+  z-index: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  /* ================= credits ================ */
+
+  #credits {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .web-credit a {
+    font-size: 1.1rem;
+  }
+
+  .design-credit a {
+    font-size: 0.9rem;
+  }
+
+  .img-credit a {
+    font-size: 0.9rem;
+  }
+
+  /* ================= main dash ================= */
+
+  #main-dash {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
 }

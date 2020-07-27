@@ -10,9 +10,8 @@ const userCity = myCity();
 userCity.initWeatherObject();
 
 
-
 document.addEventListener('DOMContentLoaded', () => {
-    console.log(`we are ready ...${process.env.APP_TITLE}`);
+  console.log(`we are ready ...${process.env.APP_TITLE}`);
 
-    AppLogic.initSessionWeather(userCity);
+  AppLogic.initSessionWeather(userCity);
 });
