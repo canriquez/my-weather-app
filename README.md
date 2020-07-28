@@ -20,7 +20,7 @@ The app uses information from the following main APIs:
 # Key design information
 - The app uses myCity factory function to store key weather information and basic methods used to manage app logic sequences.
 - All API services are managed using function collections hosted in specific files (components), exposed using the module pattern.
-- applogic.js contains the main functions organizing the initial session weather search. #initSessionWeather() method would organize the module methods to get the user's IP, coordinates, and a final query to the open weather map API to get the initial nearby city for the first weather readout. initCityQueryWeather() would organize an Adhoc query for a specific city.
+- applogic.js contains the main functions organizing the initial session weather search. #initSessionWeather() method would organize the module methods to get the user's IP (IPv6 / IPv4), coordinates, and a final query to the open weather map API to get the initial nearby city for the first weather readout. initCityQueryWeather() would organize an Adhoc query for a specific city.
 - DisplayController module contains all functions to handle the screen renders.
 - The Barometer Arrow uses a set of formulas to "translate" the weather description id [openweathermap.org weather conditions codes](https://openweathermap.org/weather-conditions) into correspondent degrees used by the CSS transform property "rotate", to point to the right weather description icon.
 
