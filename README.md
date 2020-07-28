@@ -15,7 +15,7 @@ The app uses information from the following main APIs:
 
 # live demo
 
-[live app @Netlify](http://raw.githack.com/canriquez/my-weather-app/feat_app/dist/index.html)
+[live app @Netlify](https://anriquez-weather-app.netlify.app/)
 
 # Key design information
 - The app uses myCity factory function to store key weather information and basic methods used to manage app logic sequences.
