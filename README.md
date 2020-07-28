@@ -9,13 +9,13 @@ Dynamic Weather App. Built with JavaScript HTML/CSS and API services.
 The app uses information from the following main APIs:
 
 - [Openweathermap.org API](https://openweathermap.org/) for worldwide city weather information. You will need to create an account and generate a private API key.
-- [cloudflare](https://www.cloudflare.com/) for Fetching client's current public IP.
-- [ipstack.com](https://ipstack.com/) for Public IP to Coordinates / World City service  API. You will need to create an account and generate a private API key.
+- [Cloudflare](https://www.cloudflare.com/) for Fetching client's current public IP.
+- [FreeGeoIp.app](https://freegeoip.app/) for Public IP to City & Country name service  API. Initially I have used ipstack service, but since the free tier does not offer secure session connectivity, http fetch calls created ['mixed content' problems](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content), and browsers would block this source. With FreeGEoIp I have fixed this issue.
 - [Unsplash](https://unsplash.com/documentation#search-photos) for great weather images service API. You will need to create an account and generate a private API key.
 
 # live demo
 
-[live app](http://raw.githack.com/canriquez/my-weather-app/feat_app/dist/index.html)
+[live app @Netlify](https://anriquez-weather-app.netlify.app/)
 
 # Key design information
 - The app uses myCity factory function to store key weather information and basic methods used to manage app logic sequences.
@@ -25,7 +25,7 @@ The app uses information from the following main APIs:
 - The Barometer Arrow uses a set of formulas to "translate" the weather description id [openweathermap.org weather conditions codes](https://openweathermap.org/weather-conditions) into correspondent degrees used by the CSS transform property "rotate", to point to the right weather description icon.
 
 ```
-case (id >= 800 && id <= 804):
+            case (id >= 800 && id <= 804):
                 return ((-8.249289925 * id * id) + (13208.61119 * id) - 5287208.395);
             case (id >= 701 && id <= 781):
                 return ((-1.57282646E-3 * id * id) + (1.82322848 * id) - 465.3239501);
@@ -80,17 +80,17 @@ To get a local copy up and running, follow these simple example steps.
 - After cloning the repo, create a file ```.env``` to include all the necesary api keys. Create the accounts in each service and complete the ```.env``` file as follows:
 
 ```
-APP_TITLE="My Weather App"
 WEATHER_API_KEY =<add your API key>
-IPSTACK_API=<add your API key>
 UNS_API=<add your API key>
 ```
 
 ### Install
 - Next step is to CD into the local repository and run:
 
-``` npm install ```
-``` npm run build ```
+- ``` npm install ```
+
+- ``` npm run build  ```
+
 
 
 

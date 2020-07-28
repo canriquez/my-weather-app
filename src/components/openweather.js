@@ -1,20 +1,19 @@
-
-import { IpStack } from './ipstack';
+import { FreeGeoIp } from './freegeoip';
 
 export const OpenWeatherMap = (() => {
   const loadMySessionWeather = async (userCity, units = 'metric') => {
     const API_KEY = process.env.WEATHER_API_KEY;
 
-    const mySessionCity = await IpStack.getMyCity();
+    // const mySessionCity = await IpStack.getMyCity();
+    const mySessionCity = await FreeGeoIp.getMyCity();
+
 
     if (mySessionCity) {
       try {
-        const lat = mySessionCity.latitude;
-        const long = mySessionCity.longitude;
-        // const lang = mySessionCity.location.languages[0].code;
+        const cName = mySessionCity.city;
+        const cCcode = mySessionCity.country_code;
         const lang = 'en';
-
-        const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=${lang}&units=${units}&appid=${API_KEY}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${cName},${cCcode}&lang=${lang}&units=${units}&appid=${API_KEY}`;
 
         const response = await fetch(url,
           { mode: 'cors' });
@@ -33,7 +32,7 @@ export const OpenWeatherMap = (() => {
   const loadMyCityWeather = async (city = 'london', units = 'metric', lang = 'en') => {
     const API_KEY = process.env.WEATHER_API_KEY;
 
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&lang=${lang}&APPID=${API_KEY}`,
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&lang=${lang}&APPID=${API_KEY}`,
       { mode: 'cors' });
 
     const responseObject = await response.json();
