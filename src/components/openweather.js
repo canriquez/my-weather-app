@@ -7,7 +7,6 @@ export const OpenWeatherMap = (() => {
     // const mySessionCity = await IpStack.getMyCity();
     const mySessionCity = await FreeGeoIp.getMyCity();
 
-
     if (mySessionCity) {
       try {
         const cName = mySessionCity.city;

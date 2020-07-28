@@ -1,18 +1,21 @@
 
 export const CloudFlare = (() => {
   const getMyIP = async () => {
-    const ipRegexp = /(?=ip=)ip=(\d+[.]\d+[.]\d+[.]\d+)/g;
-    const ccRegex = /(?=loc)loc=(\w+)\n/g;
+    const ipObj = { ip: '', loc: '' };
     try {
       const response = await fetch('https://www.cloudflare.com/cdn-cgi/trace',
         { mode: 'cors' });
       const responseText = await response.text();
-      const myIp = responseText.match(ipRegexp)[0].replace(/\n|\r/g, '');
-      const myCc = responseText.match(ccRegex)[0].replace(/\n|\r/g, '');
-      if (myIp && myCc) {
-        return [myIp.split('ip=').join(''), myCc.split('loc=').join('')];
+      const resArr = responseText.split('\n');
+
+      for (let i = 0; i < resArr.length; i += 1) {
+        const line = resArr[i].split('=');
+        // eslint-disable-next-line prefer-destructuring
+        if (line[0] === 'ip') { ipObj.ip = line[1]; }
+        // eslint-disable-next-line prefer-destructuring
+        if (line[0] === 'loc') { ipObj.loc = line[1]; }
       }
-      return [];
+      return ipObj;
     } catch (err) {
       throw ('Something went wrong with cloudflare :', err);
     }
