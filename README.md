@@ -50,7 +50,7 @@ case (id >= 800 && id <= 804):
 - Temperature and Wind units will toggle between metric and imperial system, by clicking / touching the icon <img src="./src/icons/system_switch-C.svg" alt="alt text" width="25"> . The temperature units will toggle between Centigrades and Faranhaid on each click of the icon. The same will ocurr for wid speed between km/h and mph units.
 
 # Dashboard design inspiration:
-- The User Interface design was inspired by (Piotr Sliwa "Weather widget)[https://dribbble.com/shots/1127407-Weather-widget] original design.
+- The User Interface design was inspired by [Piotr Sliwa "Weather widget](https://dribbble.com/shots/1127407-Weather-widget) original design.
 
 # Background photography credits (Unsplash)
 - The app sources random background pictures using the 'weather description' as a keyword for the picture theme.
