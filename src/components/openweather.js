@@ -20,7 +20,7 @@ export const OpenWeatherMap = (() => {
                 const lang = 'en';
 
                 //const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=${lang}&units=${units}&appid=${API_KEY}`;
-                const url = `http://api.openweathermap.org/data/2.5/weather?q=${cName},${cCcode}&lang=${lang}&units=${units}&appid=${API_KEY}`;
+                const url = `https://api.openweathermap.org/data/2.5/weather?q=${cName},${cCcode}&lang=${lang}&units=${units}&appid=${API_KEY}`;
 
                 console.log('querying with :/n' + url);
                 const response = await fetch(url,
