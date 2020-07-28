@@ -1,7 +1,7 @@
 
 export const CloudFlare = (() => {
   const getMyIP = async () => {
-    const ipRegexp = /(?=ip=)ip=(\d+[.]\d+[.]\d+[.]\d+)/g;
+    const ipRegexp = /(?=ip=)ip=(.+)/;
     const ccRegex = /(?=loc)loc=(\w+)\n/g;
     try {
       const response = await fetch('https://www.cloudflare.com/cdn-cgi/trace',
