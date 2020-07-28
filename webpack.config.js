@@ -1,6 +1,5 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -49,5 +48,5 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-  ]
+  ],
 };
