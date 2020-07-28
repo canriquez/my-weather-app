@@ -116,6 +116,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Family, always my family.
+- @Torres-ssf helping me out troubleshoot IPv6 Edge cases from Curitiba / Brasil! Thanks Sergio!
 - The Beagles!
 
 ## 📝 License
