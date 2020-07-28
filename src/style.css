@@ -4,7 +4,7 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  transition: all 0.7s ease-in-out;
+  transition: all 1s cubic-bezier(0.45, 1.4, 0.12, 1.8);
 }
 
 body {
@@ -360,8 +360,6 @@ section div {
   height: 110%;
   background-position: center;
   background-repeat: no-repeat;
-
-  /*   transform: translateX(-50%) translateY(-50%) rotate(-90deg); */
   transition: all 1s ease-in-out;
 }
 
