@@ -89,7 +89,8 @@ UNS_API=<add your API key>
 ### Install
 - Next step is to CD into the local repository and run:
 
-``` $ npm install ```
+``` npm install ```
+``` npm run build ```
 
 
 
