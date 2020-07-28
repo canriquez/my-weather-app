@@ -70,11 +70,11 @@ body {
 }
 
 .f-fil {
-  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
 }
 
 .f-fil-m {
-  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
 }
 
 /* ================ section ================ */
@@ -98,9 +98,14 @@ section div {
 /* ================= main dash ================= */
 
 #main-dash {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
   max-width: 530px;
-  width: 80%;
-  margin: 0 auto;
+
+  /*   margin: 0 auto; */
   min-height: 571px;
 }
 
@@ -111,7 +116,6 @@ section div {
   justify-content: space-around;
   width: 45vw;
   margin: 15px;
-
   background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 100%);
 }
 
@@ -125,7 +129,7 @@ section div {
 
 .speed p {
   font-size: 2.5rem;
-  margin: 0px;
+  margin: 0;
   color: white;
 }
 
@@ -141,7 +145,7 @@ section div {
 
 .wind-arrow {
   background-image: url("./icons/wind_arrow.svg");
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
   position: relative;
   display: inline-block;
   width: 24px;
@@ -166,7 +170,7 @@ section div {
 
 .humidity p {
   font-size: 2.5rem;
-  margin: 0px;
+  margin: 0;
   color: white;
 }
 
@@ -175,7 +179,7 @@ section div {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
   position: relative;
   display: inline-block;
   width: 30px;
@@ -200,13 +204,14 @@ section div {
   position: relative;
   justify-content: space-around;
   width: 100%;
-  margin: 15px;
+  margin: 5px 15px 15px 15px;
 }
 
 .city-name p {
   font-size: 2rem;
   line-height: 2.1rem;
 }
+
 .state-name p {
   font-size: 1.2rem;
   line-height: 2.1rem;
@@ -215,14 +220,18 @@ section div {
 .state-name p,
 .city-name p {
   font-family: futura-light, sans-serif;
-  margin-bottom: 0px;
+  margin-bottom: 0;
   text-transform: uppercase;
   color: white;
 }
 
+.city-name p:hover {
+  border: dashed 1px white;
+}
+
 .country-flag {
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   right: 5px;
 }
 
@@ -251,7 +260,7 @@ section div {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
   position: relative;
   display: inline-block;
   width: 30px;
@@ -274,7 +283,6 @@ section div {
   position: relative;
   padding: 5px;
   margin: 20px auto 5px auto;
-  widht: 100vw;
   max-width: 320px;
   max-height: 284px;
   height: 50vh;
@@ -296,15 +304,14 @@ section div {
 }
 
 .wi {
-  position: absolute !important;
+  position: absolute;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
   width: 30px;
   height: 30px;
   margin: 0;
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
 }
 
 #sunny {
@@ -353,6 +360,7 @@ section div {
   height: 110%;
   background-position: center;
   background-repeat: no-repeat;
+
   /*   transform: translateX(-50%) translateY(-50%) rotate(-90deg); */
   transition: all 1s ease-in-out;
 }
@@ -375,36 +383,36 @@ section div {
   font-size: 2.8rem;
   z-index: 2;
 }
+
 #temp span:nth-child(2) {
   align-self: flex-start;
   font-size: 1.5rem;
-  /* vertical-align: super; */
-}
 
-#unitButton {
+  /* vertical-align: super; */
 }
 
 .units {
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
-  position: absolute !important;
+  position: absolute;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 90% 90%;
-  position: relative;
   width: 50.53px;
   height: 25.33px;
   margin: 0;
-  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
 }
 
 .c-units {
   background-image: url("./icons/system_switch-C.svg");
+  cursor: pointer;
 }
 
 .f-units {
   background-image: url("./icons/system_switch-F.svg");
+  cursor: pointer;
 }
 
 /*  Background - image */
@@ -417,10 +425,13 @@ section div {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
   /*   background-color: rgba(255, 255, 255, 0.2); */
   width: 100%;
   height: 100%;
+
   /* background-blend-mode: difference; */
+
   /*  opacity: 0.5; */
   z-index: -2;
 }
@@ -436,6 +447,14 @@ section div {
 }
 
 /* =========== credits ============ */
+
+#credits {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
 
 .web-credit {
   margin-bottom: 5px;
@@ -472,13 +491,6 @@ section div {
 @media only screen and (min-width: 768px) {
   /* ================= credits ================ */
 
-  #credits {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
   .web-credit a {
     font-size: 1.1rem;
   }
@@ -489,14 +501,5 @@ section div {
 
   .img-credit a {
     font-size: 0.9rem;
-  }
-
-  /* ================= main dash ================= */
-
-  #main-dash {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
   }
 }

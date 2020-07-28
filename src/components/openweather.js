@@ -7,7 +7,6 @@ export const OpenWeatherMap = (() => {
     const API_KEY = process.env.WEATHER_API_KEY;
     console.log('Attempting get my session lat and long...');
 
-    const wObj = userCity.getWeatherObject();
     const mySessionCity = await IpStack.getMyCity();
 
     if (mySessionCity) {
@@ -43,10 +42,6 @@ export const OpenWeatherMap = (() => {
   const loadMyCityWeather = async (city = 'london', units = 'metric', lang = 'en') => {
     console.log(`now getting the weather info for: ${city}`);
     const API_KEY = process.env.WEATHER_API_KEY;
-    const myInfo = document.createElement('article');
-    const myCityName = document.createElement('h2');
-    const myTemp = document.createElement('p');
-    const myHum = document.createElement('p');
 
     const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&lang=${lang}&APPID=${API_KEY}`,
       { mode: 'cors' });

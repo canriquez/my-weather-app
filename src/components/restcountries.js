@@ -1,4 +1,4 @@
-export const restCountries = (() => {
+export const RestCountries = (() => {
   const getCountryName = async (cCode) => {
     console.log(`retrieving my country Name for...:${cCode}`);
     const url = `https://restcountries.eu/rest/v2/alpha/${cCode}`;
@@ -24,4 +24,4 @@ export const restCountries = (() => {
   };
 })();
 
-export default restCountries;
+export default RestCountries;

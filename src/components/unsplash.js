@@ -27,12 +27,11 @@ export const UnsPlash = (() => {
         divTag.style.backgroundImage = `url(${unsUrl})`;
 
         console.log(creditsInfo);
-
-        return creditsInfo;
       }
     } catch (err) {
       console.warn('Something went wrong with Unsplash imaginary :', err);
     }
+    return creditsInfo;
   }
 
   return {
