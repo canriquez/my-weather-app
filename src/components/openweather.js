@@ -3,9 +3,7 @@ import { IpStack } from './ipstack';
 
 export const OpenWeatherMap = (() => {
   const loadMySessionWeather = async (userCity, units = 'metric') => {
-    console.log('now getting the session weather');
     const API_KEY = process.env.WEATHER_API_KEY;
-    console.log('Attempting get my session lat and long...');
 
     const mySessionCity = await IpStack.getMyCity();
 
@@ -16,31 +14,23 @@ export const OpenWeatherMap = (() => {
         // const lang = mySessionCity.location.languages[0].code;
         const lang = 'en';
 
-        console.log(`found my lat ${lat} and long ${long} with my language ${lang}`);
         const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&lang=${lang}&units=${units}&appid=${API_KEY}`;
 
-        console.log(`...attepmting openweathermap.org with \n${url}`);
         const response = await fetch(url,
           { mode: 'cors' });
-        console.log('session weather response below');
         const responseObject = await response.json();
-
-        console.log('response below');
-        console.log(responseObject);
 
         userCity.updateWeatherObject(responseObject);
         // Updates country name from IpStack response.
         // OpenWeather APi does not provide country name.
-        console.log(`Storing country name: ${mySessionCity.country_name}`);
         userCity.updateCountryObject(mySessionCity.country_name);
       } catch (err) {
-        console.warn('Something went wrong with session weather :', err);
+        throw ('Something went wrong with session weather :', err);
       }
     }
   };
 
   const loadMyCityWeather = async (city = 'london', units = 'metric', lang = 'en') => {
-    console.log(`now getting the weather info for: ${city}`);
     const API_KEY = process.env.WEATHER_API_KEY;
 
     const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&lang=${lang}&APPID=${API_KEY}`,
@@ -48,8 +38,6 @@ export const OpenWeatherMap = (() => {
 
     const responseObject = await response.json();
 
-    console.log('response below');
-    console.log(responseObject);
     return responseObject;
   };
   return {

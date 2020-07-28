@@ -17,7 +17,6 @@ export const DisplayController = (() => {
 
   /* translate weather description id into degres for bar-arrow */
   const transWeatherDescription = (id) => {
-    console.log(`hey- we are in the toDeg Switch id: ${id}`);
     switch (true) {
       case (id >= 800 && id <= 804):
         return ((-8.249289925 * id * id) + (13208.61119 * id) - 5287208.395);
@@ -95,7 +94,6 @@ export const DisplayController = (() => {
   };
 
   const buildCredits = (data) => {
-    console.log('building credits...');
     let creditBox = renderWebCredits();
     creditBox += renderDesignCredits();
     creditBox += renderPhotoCredits(data);
@@ -110,17 +108,13 @@ export const DisplayController = (() => {
   /* render full temperature and arrow wheather meter */
 
   const renderRotateBarArrow = (data) => {
-    console.log('HERE HERE: attempt bar arrow rotation...');
-    console.log(`data.weather.id :${data.weather.id}`);
     const toDeg = transWeatherDescription(data.weather.id);
-    console.log(`toDeg :${toDeg}`);
     const arrowTag = document.getElementById('bar-arrow');
     arrowTag.style.transform = `translateX(-50%) translateY(-50%) rotate(${toDeg}deg)`;
   };
 
   const renderTempDash = (data, ready) => {
     let htmlTag = '<div id="temp" class="f-fil row-flex">';
-    console.log(`temp data is :${data.main.temp} - typeOf :${typeof (data.main.temp)}`);
     htmlTag += `<span>${ready ? data.main.temp.toFixed(1) : data.main.temp}</span>`;
     htmlTag += '<span>o</span>';
     htmlTag += `<span>${data.main.unit}</span></div>`;
@@ -170,36 +164,29 @@ export const DisplayController = (() => {
 
 
   const addSystemToggle = (userCity) => {
-    console.log('adding system unit system toggler..');
     const toggleTag = document.getElementById('unitButton');
     const data = userCity.getWeatherObject();
     const ready = userCity.getDataReady();
 
     if (data.main.unit === 'C') {
       // change class to toggle button to settled to "C"
-      console.log('toggling class to C degress..');
       toggleTag.classList.remove('f-units');
       toggleTag.classList.add('c-units');
     } else {
       // change class to toggle button to settled to "C"
-      console.log('toggling class to F degress..');
       toggleTag.classList.remove('c-units');
       toggleTag.classList.add('f-units');
     }
 
     const toggleUnits = function toggleUnits(e) {
-      console.log('Click on toggler icon..');
       e.stopPropagation();
-      const newUnit = userCity.toggleUnits();
+      userCity.toggleUnits();
 
-      console.log(`New Unit is :${newUnit}`);
       // render temp tag with new values/units
-      console.log('Re-rendering TempDash');
       const tempDash = renderTempDash(data, ready);
       document.getElementById('weather-lab').innerHTML = tempDash;
 
       // render wind tag with new values/units
-      console.log('Re-rendering Windbox');
       let dataBox = renderWindBox(data, ready);
       dataBox += renderHumiBox(data);
       document.getElementById('wind-hum-dash').innerHTML = dataBox;

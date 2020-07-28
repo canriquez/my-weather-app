@@ -1,5 +1,3 @@
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './style.css';
 
@@ -11,7 +9,5 @@ userCity.initWeatherObject();
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  console.log(`we are ready ...${process.env.APP_TITLE}`);
-
   AppLogic.initSessionWeather(userCity);
 });
