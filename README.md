@@ -13,6 +13,9 @@ The app uses information from the following main APIs:
 - [ipstack.com](https://ipstack.com/) for Public IP to Coordinates / World City service  API. You will need to create an account and generate a private API key.
 - [Unsplash](https://unsplash.com/documentation#search-photos) for great weather images service API. You will need to create an account and generate a private API key.
 
+# live demo
+
+[live app](http://raw.githack.com/canriquez/my-weather-app/feat_app/dist/index.html)
 
 # Key design information
 - The app uses myCity factory function to store key weather information and basic methods used to manage app logic sequences.
