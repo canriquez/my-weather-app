@@ -73,8 +73,11 @@ export const DisplayController = (() => {
   };
 
   const renderPhotoCredits = (data) => {
-    const htmlTag = `<div class="img-credit">
-        <a href="${data.links.html}">Photo by: ${data.user.username} @unsplash</a>
+    const name = data.user.first_name !== '' ? data.user.first_name : '';
+    const last = data.user.last_name !== '' ? data.user.last_name : '';
+    const htmlTag = `<div class="img-credit"><span>Photo by: </span>
+        <a href="${data.links.html}">${name} ${last}</a><span> on </span>
+        <a href="https://unsplash.com?utm_source=your_app_name&amp;utm_medium=referral">Unsplash</a>
         </div>`;
     return htmlTag;
   };
