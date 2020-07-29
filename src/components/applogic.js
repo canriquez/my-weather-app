@@ -110,10 +110,17 @@ export const AppLogic = (() => {
     cancellTag.addEventListener('click', cancellNewCity, false);
   };
 
+  const initSessionEmpty = function initSessionEmpty(userCity) {
+    DisplayController.buildWeatherLab(userCity);
+    DisplayController.buildWinHumDash(userCity);
+    addCityListeners(userCity);
+  };
+
 
   return {
     initSessionWeather,
     initCityQueryWeather,
+    initSessionEmpty,
 
   };
 })();

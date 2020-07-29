@@ -9,5 +9,6 @@ userCity.initWeatherObject();
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  AppLogic.initSessionEmpty(userCity);
   AppLogic.initSessionWeather(userCity);
 });
