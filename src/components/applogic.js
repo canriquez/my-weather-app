@@ -111,12 +111,9 @@ export const AppLogic = (() => {
   };
 
   const initSessionEmpty = function initSessionEmpty(userCity) {
-
-    const currentObject = userCity.getWeatherObject();
     DisplayController.buildWeatherLab(userCity);
     DisplayController.buildWinHumDash(userCity);
     addCityListeners(userCity);
-
   };
 
 
