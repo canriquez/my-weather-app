@@ -382,6 +382,12 @@ section div {
   z-index: 2;
 }
 
+.img-credit span {
+  color: dimgray;
+  font-size: 0.9rem;
+  z-index: 0;
+}
+
 #temp span:nth-child(2) {
   align-self: flex-start;
   font-size: 1.5rem;
@@ -473,16 +479,17 @@ section div {
   text-decoration: none;
   cursor: pointer;
   font-size: 0.6rem;
-  text-align: left;
   z-index: 0;
+}
+
+.img-credit {
+  margin-bottom: 5px;
 }
 
 .img-credit a {
   color: dimgray;
-  text-decoration: none;
   cursor: pointer;
   font-size: 0.6rem;
-  text-align: left;
   z-index: 0;
 }
 
