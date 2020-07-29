@@ -473,16 +473,23 @@ section div {
   text-decoration: none;
   cursor: pointer;
   font-size: 0.6rem;
-  text-align: left;
   z-index: 0;
+}
+
+.img-credit {
+  margin-bottom: 5px;
 }
 
 .img-credit a {
   color: dimgray;
-  text-decoration: none;
   cursor: pointer;
   font-size: 0.6rem;
-  text-align: left;
+  z-index: 0;
+}
+
+.img-credit span {
+  color: dimgray;
+  font-size: 0.9rem;
   z-index: 0;
 }
 
