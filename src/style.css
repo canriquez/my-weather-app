@@ -4,12 +4,13 @@
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
+  transition: all 1s cubic-bezier(0.45, 1.4, 0.12, 1.8);
 }
 
 body {
-  background-color: #f8f9fa;
+  background-color: gray;
   font-family: futura-light, sans-serif;
+  overflow: hidden;
 }
 
 /* ================ fonts ================ */
@@ -56,4 +57,447 @@ body {
   display: "" !important;
 }
 
+.bs-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.bs-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.lg-br {
+  border-radius: 2%;
+}
+
+.f-fil {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.6));
+}
+
+.f-fil-m {
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
+}
+
 /* ================ section ================ */
+
+nav h1 {
+  color: white;
+}
+
+section {
+  margin: 20px 0;
+}
+
+section form {
+  justify-content: center !important;
+}
+
+section div {
+  margin: 0 auto;
+}
+
+/* ================= main dash ================= */
+
+#main-dash {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+  max-width: 530px;
+
+  /*   margin: 0 auto; */
+  min-height: 571px;
+}
+
+/* ================ data-cards ================ */
+
+.data-card {
+  position: relative;
+  justify-content: space-around;
+  width: 45vw;
+  margin: 15px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 100%);
+}
+
+.hum {
+  justify-content: space-around;
+}
+
+.speed {
+  width: 50%;
+}
+
+.speed p {
+  font-size: 2.5rem;
+  margin: 0;
+  color: white;
+}
+
+.win-dir {
+  width: 50%;
+}
+
+.win-dir p {
+  margin: 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.wind-arrow {
+  background-image: url("./icons/wind_arrow.svg");
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  fill: white;
+}
+
+.percent {
+  width: 20%;
+}
+
+.percent p {
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.humidity {
+  width: 33%;
+}
+
+.humidity p {
+  font-size: 2.5rem;
+  margin: 0;
+  color: white;
+}
+
+.drop {
+  background-image: url("./icons/drop.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  fill: white;
+}
+
+.card-title {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* City Card information */
+
+.city-card {
+  position: relative;
+  justify-content: space-around;
+  width: 100%;
+  margin: 5px 15px 15px 15px;
+}
+
+.city-name p {
+  font-size: 2rem;
+  line-height: 2.1rem;
+}
+
+.state-name p {
+  font-size: 1.2rem;
+  line-height: 2.1rem;
+}
+
+.state-name p,
+.city-name p {
+  font-family: futura-light, sans-serif;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  color: white;
+}
+
+.city-name p:hover {
+  border: dashed 1px white;
+}
+
+.country-flag {
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+}
+
+.country-flag img {
+  width: 50px;
+  opacity: 0.5;
+}
+
+/* Add new city action */
+
+.input-new-city {
+  width: 70%;
+  font-size: 1.8rem;
+  line-height: 3.5rem;
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+}
+
+.input-city-show {
+  border: dashed 1px white;
+}
+
+.edit-action-btn {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+#ok-text {
+  background-image: url("./icons/check.svg");
+}
+
+#cancel-text {
+  background-image: url("./icons/cancel.svg");
+}
+
+/* ================ weather lab | back-Scale ================ */
+
+.lab {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 5px;
+  margin: 20px auto 5px auto;
+  max-width: 320px;
+  max-height: 284px;
+  height: 50vh;
+  min-height: 270px;
+  background-color: transparent;
+}
+
+#back-scale {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-mask-image: url("./images/barom_scale.svg");
+  mask-image: url("./images/barom_scale.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.wi {
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
+}
+
+#sunny {
+  bottom: 16%;
+  right: 22%;
+  background-image: url("./icons/sunny.svg");
+}
+
+#stormy {
+  bottom: 50%;
+  left: 12%;
+  background-image: url("./icons/stormy.svg");
+}
+
+#snowy {
+  bottom: 16%;
+  left: 22%;
+  background-image: url("./icons/snowy.svg");
+}
+
+#part-cloud {
+  bottom: 51%;
+  right: 12%;
+  background-image: url("./icons/part-cloud.svg");
+}
+
+#showers {
+  top: 13%;
+  left: 26%;
+  background-image: url("./icons/showers.svg");
+}
+
+#cloudy {
+  top: 12%;
+  right: 21%;
+  transform: translateX(-50%);
+  background-image: url("./icons/cloudy.svg");
+}
+
+#bar-arrow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-image: url("./images/bar-arrow-01.svg");
+  width: 110%;
+  height: 110%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 1s ease-in-out;
+}
+
+#pressure {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1.3rem;
+}
+
+#temp {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 2.8rem;
+  z-index: 2;
+}
+
+#temp span:nth-child(2) {
+  align-self: flex-start;
+  font-size: 1.5rem;
+
+  /* vertical-align: super; */
+}
+
+.units {
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 90% 90%;
+  width: 50.53px;
+  height: 25.33px;
+  margin: 0;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.6));
+}
+
+.c-units {
+  background-image: url("./icons/system_switch-C.svg");
+  cursor: pointer;
+}
+
+.f-units {
+  background-image: url("./icons/system_switch-F.svg");
+  cursor: pointer;
+}
+
+/*  Background - image */
+.image {
+  /*   background-image: url(https://images.unsplash.com/photo-1572553257259-272f8b389fa8?ixlib=rb-1.2.1&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=400&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjE1MTEzM30;);
+ */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /*   background-color: rgba(255, 255, 255, 0.2); */
+  width: 100%;
+  height: 100%;
+
+  /* background-blend-mode: difference; */
+
+  /*  opacity: 0.5; */
+  z-index: -2;
+}
+
+.image-gradient {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+/* =========== credits ============ */
+
+#credits {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.web-credit {
+  margin-bottom: 5px;
+  border-bottom: 0.5px solid dimgray;
+}
+
+.web-credit a {
+  color: burlywood;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 0;
+  font-size: 0.7rem;
+  text-align: right;
+}
+
+.design-credit a {
+  color: dimgray;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.6rem;
+  text-align: left;
+  z-index: 0;
+}
+
+.img-credit a {
+  color: dimgray;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.6rem;
+  text-align: left;
+  z-index: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  /* ================= credits ================ */
+
+  .web-credit a {
+    font-size: 1.1rem;
+  }
+
+  .design-credit a {
+    font-size: 0.9rem;
+  }
+
+  .img-credit a {
+    font-size: 0.9rem;
+  }
+}

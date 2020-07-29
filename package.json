@@ -6,8 +6,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,16 @@
     "url": ""
   },
   "homepage": "",
+  "dependencies": {
+    "bootstrap": "^4.5.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  },
   "devDependencies": {
     "css-loader": "^3.6.0",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^2.0.0",
+    "favicons-webpack-plugin": "^4.2.0",
     "file-loader": "^6.0.0",
     "style-loader": "^1.2.1",
     "stylelint": "^13.3.3",
