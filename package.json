@@ -25,16 +25,16 @@
     "popper.js": "^1.16.1"
   },
   "devDependencies": {
-    "css-loader": "^3.6.0",
+    "css-loader": "^6.7.3",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^2.0.0",
-    "favicons-webpack-plugin": "^4.2.0",
+    "favicons-webpack-plugin": "^6.0.0",
     "file-loader": "^6.0.0",
     "style-loader": "^1.2.1",
     "stylelint": "^13.3.3",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-scss": "^3.17.2",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }
